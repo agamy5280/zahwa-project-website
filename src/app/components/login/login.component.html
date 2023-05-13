@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-start">Login Page</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="bi bi-house-door"></i> Home</a>
+        </li>
+        <li><i class="bi bi-chevron-double-right pe-2"></i> User Login</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid big-padding">
+  <div class="container">
+    <form [formGroup]="loginForm" id="myForm" (ngSubmit)="login()">
+      <div class="row">
+        <div class="col-xl-6 col-lg-7 col-md-10 py-5 mx-auto">
+          <div class="login-card bg-white shadow-md p-5">
+            <h4 class="text-center mb-5">Enter your detail to Login</h4>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Email Address</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  placeholder="Enter Email Address"
+                  class="form-control"
+                  formControlName="email"
+                />
+              </div>
+              <ng-container *ngIf="loginForm.controls['email'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="loginForm.controls['email']?.errors?.['required']"
+                >
+                  Please type your email!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Password</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="password"
+                  placeholder="Enter Password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+              <ng-container *ngIf="loginForm.controls['email'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="loginForm.controls['email']?.errors?.['required']"
+                >
+                  Please type your password!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2"></div>
+              <ng-container *ngIf="emailNotFound">
+                <p class="invalid-info">
+                  Email not found or password is incorrect
+                </p>
+              </ng-container>
+              <div class="col-md-8">
+                <button
+                  type="submit"
+                  id="submit"
+                  class="btn btn-danger"
+                  [disabled]="!loginForm.valid"
+                >
+                  Click to Login
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

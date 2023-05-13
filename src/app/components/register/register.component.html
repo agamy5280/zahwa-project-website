@@ -1,0 +1,194 @@
+<app-header></app-header>
+<div class="container-fluid big-padding">
+  <form
+    id="myForm"
+    [formGroup]="registerForm"
+    id="registerForm"
+    (ngSubmit)="register()"
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-lg-7 col-md-10 py-5 mx-auto">
+          <div class="login-card bg-white shadow-md p-5">
+            <h4 class="text-center mb-5">Enter your detail to Signup</h4>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">First Name</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  placeholder="Enter Full Name"
+                  class="form-control"
+                  formControlName="firstName"
+                />
+              </div>
+              <ng-container *ngIf="registerForm.controls['firstName'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['firstName']?.errors?.['required']"
+                >
+                  Please type your First Name!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['firstName'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['firstName']?.errors?.['pattern']"
+                >
+                  First name must not contains numbers or Spaces!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Last Name</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  placeholder="Enter Full Name"
+                  class="form-control"
+                  formControlName="lastName"
+                />
+              </div>
+              <ng-container *ngIf="registerForm.controls['lastName'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['lastName']?.errors?.['required']"
+                >
+                  Please type your First Name!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['lastName'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['lastName']?.errors?.['pattern']"
+                >
+                  Last name must not contains numbers or Spaces!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Mobile number</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  placeholder="Enter Mobile Number"
+                  class="form-control"
+                  formControlName="mobileNum"
+                />
+              </div>
+              <ng-container *ngIf="registerForm.controls['mobileNum'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['mobileNum']?.errors?.['pattern']"
+                >
+                  Mobile Number must only contain numbers!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['mobileNum'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['mobileNum']?.errors?.['required']"
+                >
+                  Please type your mobile number!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['mobileNum'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['mobileNum']?.errors?.['minlength']"
+                >
+                  Mobile number must atleast be 10 numbers!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Email Address</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  placeholder="Enter Email Address"
+                  class="form-control"
+                  formControlName="email"
+                />
+              </div>
+              <ng-container *ngIf="registerForm.controls['email'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['email']?.errors?.['required']"
+                >
+                  Please type your email!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['email'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['email']?.errors?.['email']"
+                >
+                  Please type a valid email!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2">
+                <label for="">Password</label>
+                <span class="fw-bolder float-end">:</span>
+              </div>
+              <div class="col-md-8">
+                <input
+                  type="password"
+                  placeholder="Enter Password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+              <ng-container *ngIf="registerForm.controls['password'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['password']?.errors?.['required']"
+                >
+                  Please type your password!
+                </p>
+              </ng-container>
+              <ng-container *ngIf="registerForm.controls['password'].touched">
+                <p
+                  class="invalid-info"
+                  *ngIf="registerForm.controls['password']?.errors?.['minlength']"
+                >
+                  Password must be at least 8 characters!
+                </p>
+              </ng-container>
+            </div>
+            <div class="form-row row">
+              <div class="col-md-4 pt-2"></div>
+              <div class="col-md-8">
+                <ng-container *ngIf="emailUsed">
+                  <p class="invalid-info">Email Already Registered</p>
+                </ng-container>
+                <button
+                  type="submit"
+                  id="submit"
+                  class="btn btn-danger"
+                  [disabled]="!registerForm.valid"
+                >
+                  Click to Register
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-footer></app-footer>

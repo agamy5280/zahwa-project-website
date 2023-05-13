@@ -1,0 +1,155 @@
+<header class="container-fluid bg-white">
+  <div class="header-top bg-gray border-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="d-inline-flex pt-0 pt-md-2 fs-6">
+            <li class="p-2">
+              <i class="bi bi-envelope"></i> Support@zahwaAhmedAAST.com
+            </li>
+            <li class="p-2 d-none d-md-block">
+              <i class="bi bi-headphones"></i> +20123456789
+            </li>
+          </ul>
+        </div>
+        <ng-container *ngIf="!loggedUser">
+          <div class="col-md-4 d-flex align-items-end">
+            <ul class="ms-auto d-inline-flex">
+              <li class="p-2">
+                <a target="_blank" href="login"
+                  ><button class="btn px-4 btn-danger">Login</button></a
+                >
+              </li>
+              <li class="p-2">
+                <a target="_blank" href="register"
+                  ><button class="btn px-4 btn-outline-danger">
+                    Sign Up
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="loggedUser">
+          <div class="col-md-4 d-flex align-items-end">
+            <ul class="ms-auto d-inline-flex">
+              <li class="p-2">
+                <button
+                  type="button"
+                  class="btn"
+                  data-toggle="dropdown"
+                  id="UserName"
+                >
+                  Hello, {{ loggedUser[0]["firstName"] }}!
+                  <i class="fas fa-caret-down"></i>
+                </button>
+              </li>
+              <li class="p-2">
+                <a target="_blank"
+                  ><button class="btn px-4 btn-danger" (click)="logout()">
+                    Logout
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="logo-contaienr p-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-9 pt-1 pb-2">
+          <a href="home">
+            <img class="logo" src="assets/images/logo.jpg" alt="" />
+          </a>
+        </div>
+        <div class="col-md-3 col-3 pt-1 text-end">
+          <ng-container *ngIf="loggedUser">
+            <a href="cart">
+              <button
+                type="button"
+                class="btn btn-light shadow-md border position-relative"
+              >
+                <i class="bi fs-4 bi-basket"></i>
+                <span
+                  class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                  2
+                </span>
+              </button>
+            </a>
+
+            <button
+              type="button"
+              class="btn d-none d-md-inline-block ms-3 btn-light shadow-md border position-relative"
+            >
+              <i class="bi fs-4 bi-heart"></i>
+              <span
+                class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-warning"
+              >
+                2
+              </span>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+      <span class="h1 text-uppercase text-dark bg-light px-2">TREAT</span>
+      <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1"
+        >Shop</span
+      >
+    </div>
+  </div>
+  <div class="menu-bar bg-danger container-fluid border-top">
+    <div class="container">
+      <h6 class="d-md-none text-white p-3 mb-0 fw-bold">
+        Menu
+        <a
+          class="text-white"
+          data-bs-target="#menu"
+          data-bs-toggle="collapse"
+          aria-expanded="false"
+          aria-controls="menu"
+          ><i class="bi cp bi-list float-end fs-1 dmji"></i
+        ></a>
+      </h6>
+      <ul id="menu" class="navcol fw-bold d-none d-md-inline-flex">
+        <li class="p-21 px-4">
+          <a class="text-white" href=""
+            >Categories <i class="bi pt-2 bi-chevron-down"></i
+          ></a>
+          <div class="inner-div">
+            <ul class="">
+              <li><a href="">Fragrances</a></li>
+              <li><a href="">Skincare</a></li>
+              <li><a href="">Home Decoration</a></li>
+              <li><a href="">Womens Shoes</a></li>
+              <li><a href="">Mens Shirts</a></li>
+              <li><a href="">Mens Shoes</a></li>
+              <li><a href="">Mens Watches</a></li>
+              <li><a href="">Womens Watches</a></li>
+              <li><a href="">Womens Bags"</a></li>
+              <li><a href="">Womens Jewellery</a></li>
+              <li><a href="">Sunglasses</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="p-21 px-4">
+          <a class="text-white" href=""
+            >Pages <i class="bi pt-2 bi-chevron-down"></i
+          ></a>
+          <div class="inner-div">
+            <ul class="">
+              <li><a href="home">Home</a></li>
+              <li><a href="about">About US</a></li>
+              <li><a href="contact">Contact US</a></li>
+              <li><a href="products">Products</a></li>
+              <li><a href="cart">Cart</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
