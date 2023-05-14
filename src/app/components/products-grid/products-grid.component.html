@@ -1,1 +1,72 @@
-<p>products-grid works!</p>
+<div class="row">
+  <ng-container
+    *ngFor="
+      let prod of products | paginate : { itemsPerPage: 9, currentPage: page }
+    "
+  >
+    <div class="col-lg-4 col-sm-6 mb-4">
+      <div class="bg-white p-2 shadow-md">
+        <div class="text-center">
+          <a href="detail.html">
+            <img
+              style="height: 200px; border-radius: 10px"
+              class="img-fluid w-100"
+              src="{{ prod['thumbnail'] }}"
+              alt=""
+            />
+          </a>
+        </div>
+        <div class="detail p-2">
+          <h4 class="mb-1 fs-5 fw-bold">{{ prod["title"] | uppercase }}</h4>
+          <b class="fs-4 text-danger">{{
+            prod["price"] - (prod["price"] * prod["discountPercentage"]) / 100
+              | currency
+          }}</b>
+          <s class="fs-5 ps-3">{{ prod["price"] | currency }}</s>
+
+          <ul class="mt-0 vgth">
+            <li class="fs-8">
+              <i class="bi text-warning bi-star-fill"></i>
+              <i class="bi text-warning bi-star-fill"></i>
+              <i class="bi text-warning bi-star-fill"></i>
+              <i class="bi text-warning bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </li>
+            <li class="float-end gvi">
+              <i class="bi text-danger bi-heart-fill"></i>
+            </li>
+          </ul>
+          <div class="row pt-2">
+            <div class="col-md-6">
+              <a>
+                <button
+                  class="btn mb-2 fw-bold w-100 btn-danger"
+                  (click)="redirectToProductPage(prod['id'])"
+                >
+                  Buy Now
+                </button>
+              </a>
+            </div>
+            <div class="col-md-6">
+              <button
+                class="btn fw-bold w-100 btn-outline-danger"
+                (click)="addProductToCart(prod)"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <div class="pagination" *ngIf="productsQuantity > 0">
+    <pagination-controls
+      pagination-controls
+      class="my-pagination"
+      (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""
+    ></pagination-controls>
+  </div>
+</div>

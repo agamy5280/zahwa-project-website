@@ -5,10 +5,12 @@
         <div class="col-md-8">
           <ul class="d-inline-flex pt-0 pt-md-2 fs-6">
             <li class="p-2">
-              <i class="bi bi-envelope"></i> Support@zahwaAhmedAAST.com
+              <i class="bi bi-envelope"
+                ><strong> Support@ZahwaAhmedAAST.com</strong></i
+              >
             </li>
             <li class="p-2 d-none d-md-block">
-              <i class="bi bi-headphones"></i> +20123456789
+              <i class="bi bi-headphones"><strong>+20123456789</strong></i>
             </li>
           </ul>
         </div>
@@ -40,8 +42,7 @@
                   data-toggle="dropdown"
                   id="UserName"
                 >
-                  Hello, {{ loggedUser[0]["firstName"] }}!
-                  <i class="fas fa-caret-down"></i>
+                  <strong>Hello, {{ loggedUser[0]["firstName"] }}!</strong>
                 </button>
               </li>
               <li class="p-2">
@@ -67,36 +68,21 @@
         </div>
         <div class="col-md-3 col-3 pt-1 text-end">
           <ng-container *ngIf="loggedUser">
-            <a href="cart">
-              <button
-                type="button"
-                class="btn btn-light shadow-md border position-relative"
-              >
-                <i class="bi fs-4 bi-basket"></i>
-                <span
-                  class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                >
-                  2
-                </span>
-              </button>
-            </a>
-
-            <button
-              type="button"
-              class="btn d-none d-md-inline-block ms-3 btn-light shadow-md border position-relative"
-            >
-              <i class="bi fs-4 bi-heart"></i>
+            <a routerLink="/cart" class="btn px-0 ml-3">
+              <i id="icon" class="fas fa-shopping-cart text-primary"></i>
               <span
-                class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-warning"
+                class="badge text-secondary border border-secondary rounded-circle"
+                style="padding-bottom: 2px"
+                >{{ localStorageService.getQuantity() }}</span
               >
-                2
-              </span>
-            </button>
+            </a>
           </ng-container>
         </div>
       </div>
-      <span class="h1 text-uppercase text-dark bg-light px-2">TREAT</span>
-      <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1"
+      <span id="logo" class="h1 text-uppercase bg-white bg-light px-2"
+        >TREAT</span
+      >
+      <span id="logo" class="h1 text-uppercase text-light bg-warning px-2 ml-n1"
         >Shop</span
       >
     </div>
@@ -121,17 +107,63 @@
           ></a>
           <div class="inner-div">
             <ul class="">
-              <li><a href="">Fragrances</a></li>
-              <li><a href="">Skincare</a></li>
-              <li><a href="">Home Decoration</a></li>
-              <li><a href="">Womens Shoes</a></li>
-              <li><a href="">Mens Shirts</a></li>
-              <li><a href="">Mens Shoes</a></li>
-              <li><a href="">Mens Watches</a></li>
-              <li><a href="">Womens Watches</a></li>
-              <li><a href="">Womens Bags"</a></li>
-              <li><a href="">Womens Jewellery</a></li>
-              <li><a href="">Sunglasses</a></li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('fragrances')"
+                  >Fragrances</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('skincare')"
+                  >Skincare</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('home-decoration')"
+                  >Home Decoration</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('womens-shoes')"
+                  >Womens Shoes</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('mens-shirts')"
+                  >Mens Shirts</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('mens-shoes')"
+                  >Mens Shoes</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('mens-watches')"
+                  >Mens Watches</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('womens-watches')"
+                  >Womens Watches</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('womens-bags')"
+                  >Womens Bags</a
+                >
+              </li>
+              <li>
+                <a
+                  id="link"
+                  (click)="goToCategoriesProducts('womens-jewellery')"
+                  >Womens Jewellery</a
+                >
+              </li>
+              <li>
+                <a id="link" (click)="goToCategoriesProducts('sunglasses')"
+                  >Sunglasses</a
+                >
+              </li>
             </ul>
           </div>
         </li>

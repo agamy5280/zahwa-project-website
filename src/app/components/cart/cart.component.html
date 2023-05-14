@@ -14,167 +14,108 @@
   </div>
 </div>
 
-<!--####################### About US Starts Here ###################-->
-<div class="container-fluid big-padding about-cover">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 mx-auto">
-        <table class="table bg-white shadow-md">
+<!-- Cart Start -->
+<div class="container-fluid">
+  <div class="row px-xl-5">
+    <div class="col-lg-8 table-responsive mb-5">
+      <table
+        class="table table-light table-borderless table-hover text-center mb-0"
+      >
+        <thead class="thead-dark">
           <tr>
-            <th>#</th>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Qty</th>
+            <th>Products</th>
             <th>Price</th>
-            <th>Amount</th>
-            <th>Action</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Remove</th>
           </tr>
-          <tr class="align-middle">
-            <td>1</td>
-            <td>
-              <img class="max-100" src="assets/images/product/p3.jpg" alt="" />
-            </td>
-            <td>Personalised Birthday Easel</td>
-            <td>2</td>
-            <td>44</td>
-            <td>88</td>
-            <td>
-              <button class="btn btn-xs pt-2 btn-danger">
-                <i class="bi bi-trash"></i>
-              </button>
-            </td>
-          </tr>
-          <tr class="align-middle">
-            <td>2</td>
-            <td>
-              <img class="max-100" src="assets/images/product/p4.jpg" alt="" />
-            </td>
-            <td>Personalised Wedding Easel</td>
-            <td>1</td>
-            <td>64</td>
-            <td>64</td>
-            <td>
-              <button class="btn btn-xs pt-2 btn-danger">
-                <i class="bi bi-trash"></i>
-              </button>
-            </td>
-          </tr>
-        </table>
-
-        <button class="btn btn-danger float-end fw-bolder px-4">
-          Make Payment
-        </button>
+        </thead>
+        <tbody class="align-middle" id="products">
+          <ng-container *ngFor="let prod of products">
+            <tr>
+              <td class="align-middle">
+                <img
+                  src="{{ prod['thumbnail'] }}"
+                  alt=""
+                  style="width: 50px; border-radius: 2px"
+                />
+                {{ prod["title"] }}
+              </td>
+              <td class="align-middle">{{ prod["price"] | currency }}</td>
+              <td class="align-middle">
+                <div class="input-group quantity mx-auto" style="width: 100px">
+                  <div class="input-group-btn">
+                    <button
+                      type="button"
+                      class="decBtn btn btn-sm btn-primary btn-minus"
+                      (click)="localStorageService.decQuantity(prod['id'])"
+                    >
+                      <i class="fa fa-minus"></i>
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    class="quantityVal form-control form-control-sm bg-secondary border-0 text-center"
+                    value="{{ prod['quantity'] }}"
+                  />
+                  <div class="input-group-btn">
+                    <button
+                      type="button"
+                      class="incBtn btn btn-sm btn-primary btn-plus"
+                      (click)="localStorageService.incQuantity(prod['id'])"
+                    >
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">
+                {{ prod["price"] * prod["quantity"] | currency }}
+              </td>
+              <td class="align-middle">
+                <button
+                  class="btn btn-sm btn-danger"
+                  type="button"
+                  (click)="localStorageService.removeItem(prod['id'])"
+                >
+                  <i class="fa fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-4">
+      <h5 class="section-title position-relative text-uppercase mb-3">
+        <span class="bg-secondary pr-3">Cart Summary</span>
+      </h5>
+      <div class="bg-light p-30 mb-5">
+        <div class="border-bottom pb-2">
+          <div class="d-flex justify-content-between mb-3">
+            <h6>Subtotal<del> (After Discount)</del></h6>
+            <h6 id="sub-total">
+              {{ localStorageService.getSubTotal() | currency }}
+            </h6>
+          </div>
+          <div class="d-flex justify-content-between">
+            <h6 class="font-weight-medium">Shipping</h6>
+            <h6 class="font-weight-medium" id="shipping">
+              {{ products.length * 10 | currency }}
+            </h6>
+          </div>
+        </div>
+        <div class="pt-2">
+          <div class="d-flex justify-content-between mt-2">
+            <h5>Total (After Shipping)</h5>
+            <h5 id="total">{{ localStorageService.getTotal() | currency }}</h5>
+          </div>
+          <a class="btn btn-block btn-primary font-weight-bold my-3 py-3">
+            Proceed To Checkout
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<footer>
-  <div class="inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 foot-about">
-          <h4>About US</h4>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            hendrerit libero pellentesque libero interdum, id mattis felis
-            dictum. Praesent eget lacus tempor justo efficitur malesuada. Cras
-            ut suscipit nisi.
-          </p>
-
-          <ul>
-            <li>23 Rose Stren Melbourn</li>
-            <li>sales@smarteyeapps.com</li>
-            <li>+91 876 766 554</li>
-          </ul>
-        </div>
-
-        <div class="col-md-3 foot-post">
-          <h4>Latest Posts</h4>
-
-          <div class="post-row">
-            <div class="image">
-              <img src="assets/images/blog/blog_01.jpg" alt="" />
-            </div>
-            <div class="detail">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                hendrerit
-              </p>
-            </div>
-          </div>
-
-          <div class="post-row">
-            <div class="image">
-              <img src="assets/images/blog/blog_02.jpg" alt="" />
-            </div>
-            <div class="detail">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                hendrerit
-              </p>
-            </div>
-          </div>
-
-          <div class="post-row">
-            <div class="image">
-              <img src="assets/images/blog/blog_03.jpg" alt="" />
-            </div>
-            <div class="detail">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                hendrerit
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3 foot-services">
-          <h4>Top Category</h4>
-
-          <ul>
-            <li><a href="">Target Statergy</a></li>
-            <li><a href="">Web Analytics</a></li>
-            <li><a href="">Page Monitering</a></li>
-            <li><a href="">Page Optimization</a></li>
-            <li><a href="">Target Statergy</a></li>
-            <li><a href="">Email Marketing</a></li>
-          </ul>
-        </div>
-
-        <div class="col-md-3 foot-news">
-          <h4>News Letter</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            justo neque, vehicula eget eros.
-          </p>
-
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control mb-0"
-              placeholder="Recipient's username"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-            />
-            <div class="input-group-append">
-              <span class="input-group-text bg-danger" id="basic-addon2"
-                ><i class="bi text-white bi-send"></i
-              ></span>
-            </div>
-          </div>
-
-          <ul>
-            <li><i class="bi bi-facebook"></i></li>
-            <li><i class="bi bi-twitter"></i></li>
-            <li><i class="bi bi-instagram"></i></li>
-            <li><i class="bi bi-linkedin"></i></li>
-            <li><i class="bi bi-pinterest"></i></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
 <app-footer></app-footer>

@@ -17,6 +17,7 @@ import { ProductsGridComponent } from './components/products-grid/products-grid.
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     ProductsPageComponent,
     ProductsGridComponent,
     PageNotFoundComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,
