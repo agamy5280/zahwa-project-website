@@ -34,7 +34,6 @@ export class ProductsGridComponent implements OnInit {
     })
   }
   redirectToProductPage(id:number){
-    this._router.navigate(['shop-detail']);
     this._router.navigate(['shop-detail'], {
       queryParams: {
         product: id,

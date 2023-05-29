@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { window } from 'rxjs';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -46,11 +47,14 @@ async ngOnInit(){
     });
   })
 }
-redirectToProductPage(id:number){
-  this._router.navigate(['shop-detail'], {
+redirectToProductPage(id: number) {
+  this._router.navigate(['/shop-detail'], {
     queryParams: {
       product: id,
     },
+  }).then(() => {
+    // Additional logic after navigation if needed
+    location.reload();
   });
 }
 addProductToCart(product:object) {
